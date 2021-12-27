@@ -14,11 +14,11 @@ public class MySQLManager : MonoBehaviour
 	public static MySQLManager Instance;
 	public static Text SqlScentences;
 
-	//Á¬½Ó·şÎñÆ÷ÓÃµÄ²ÎÊı
+	//è¿æ¥æœåŠ¡å™¨ç”¨çš„å‚æ•°
 	static string host = "bj-cynosdbmysql-grp-ryddfify.sql.tencentcdb.com";
 	static string port = "22131";
 	static string username = "root";
-	static string pwd = "Az6890mysql";
+	static string pwd = "********";
 	static string database = "travelsys";
 	static string charSet = "utf8";
 	public MySQLManager()
@@ -27,7 +27,7 @@ public class MySQLManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Á¬½ÓÊı¾İ¿â
+	/// è¿æ¥æ•°æ®åº“
 	/// </summary>
 	public static void OpenSql()
 	{
@@ -37,17 +37,17 @@ public class MySQLManager : MonoBehaviour
 			Debug.Log(connectionString);
 			dbConnection = new MySqlConnection(connectionString);
 			dbConnection.Open();
-            if (SqlScentences != null) { SqlScentences.text = "mysql> " + "ÒÑ¾­ÓëMySQL·şÎñÆ÷½¨Á¢Á¬½Ó£º\n"+ connectionString; }
+            if (SqlScentences != null) { SqlScentences.text = "mysql> " + "å·²ç»ä¸MySQLæœåŠ¡å™¨å»ºç«‹è¿æ¥ï¼š\n"+ connectionString; }
 		}
 		catch (Exception e)
 		{
-			if (SqlScentences != null) { SqlScentences.text = "mysql> " + "Error:·şÎñÆ÷Á¬½ÓÊ§°Ü"; }
-			throw new Exception("·şÎñÆ÷Á¬½ÓÊ§°Ü£¬ÇëÖØĞÂ¼ì²éÊÇ·ñ´ò¿ªMySql·şÎñ¡£" + e.Message.ToString());
+			if (SqlScentences != null) { SqlScentences.text = "mysql> " + "Error:æœåŠ¡å™¨è¿æ¥å¤±è´¥"; }
+			throw new Exception("æœåŠ¡å™¨è¿æ¥å¤±è´¥ï¼Œè¯·é‡æ–°æ£€æŸ¥æ˜¯å¦æ‰“å¼€MySqlæœåŠ¡ã€‚" + e.Message.ToString());
 		}
 	}
 
 	/// <summary>
-	/// ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+	/// å…³é—­æ•°æ®åº“è¿æ¥
 	/// </summary>
 	public void Close()
 	{
@@ -56,18 +56,18 @@ public class MySQLManager : MonoBehaviour
 			dbConnection.Close();
 			dbConnection.Dispose();
 			dbConnection = null;
-			SqlScentences.text = "mysql> " + "ÒÑ¾­ÓëMySQL·şÎñÆ÷¶Ï¿ªÁ¬½Ó";
+			SqlScentences.text = "mysql> " + "å·²ç»ä¸MySQLæœåŠ¡å™¨æ–­å¼€è¿æ¥";
 		}
 	}
 
 	/// <summary>
-	/// ²éÑ¯
+	/// æŸ¥è¯¢
 	/// </summary>
-	/// <param name="tableName">±íÃû</param>
+	/// <param name="tableName">è¡¨å</param>
 	/// <param name="items"></param>
-	/// <param name="col">×Ö¶ÎÃû</param>
-	/// <param name="operation">ÔËËã·û</param>
-	/// <param name="values">×Ö¶ÎÖµ</param>
+	/// <param name="col">å­—æ®µå</param>
+	/// <param name="operation">è¿ç®—ç¬¦</param>
+	/// <param name="values">å­—æ®µå€¼</param>
 	/// <returns>DataSet</returns>
 	public static DataSet SelectWhere(string tableName, string[] items, string[] col, string[] operation, string[] values)
 	{
@@ -104,9 +104,9 @@ public class MySQLManager : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Ö´ĞĞsqlÓï¾ä
+	/// æ‰§è¡Œsqlè¯­å¥
 	/// </summary>
-	/// <param name="sqlString">sqlÓï¾ä</param>
+	/// <param name="sqlString">sqlè¯­å¥</param>
 	/// <returns></returns>
 	public static DataSet ExecuteQuery(string sqlString)
 	{
